@@ -6,15 +6,21 @@ This project trains an image classifier using brain response topomaps to disting
 
 The dataset contains brain topomap images organized in the following structure:
 
+## Dataset Structure
+
+The dataset contains brain topomap images organized in the following structure:
+
+```text
 /topomaps
 ├── good
-│ ├── Good_6s_1.png
-│ ├── Good_6s_2.png
-│ └── ...
+│   ├── Good_6s_1.png
+│   ├── Good_6s_2.png
+│   └── ...
 └── bad
-├── Bad_6s_1.png
-├── Bad_6s_2.png
-└── ...
+    ├── Bad_6s_1.png
+    ├── Bad_6s_2.png
+    └── ...
+```
 
 - Label `1` is assigned to `good` responses.
 - Label `0` is assigned to `bad` responses.
@@ -42,20 +48,21 @@ The dataset contains brain topomap images organized in the following structure:
 - Training runs for 20 epochs by default.
 
 To train the model:
-
+  ```text
 python train.py
+```
 
 This will save model.pth in the project directory.
 
 ## Evaluation
 
 The eval.py script loads the trained model and runs predictions on a given directory of new topomaps:
-
+```text
 from eval import load_and_predict
 
 predictions = load_and_predict("path/to/new/topomaps", "model.pth")
 print(predictions)  # outputs a list of 0s and 1s
-
+```
 All images are resized to 224x224 and passed through the trained model. Predictions are thresholded using sigmoid > 0.5.
 
 ## Requirements
